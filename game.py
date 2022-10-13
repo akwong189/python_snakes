@@ -164,7 +164,11 @@ class SnakeGame:
             self.apple_coord = self.random_nonoccupied_cell()
             self.num_it_apple_not_eaten = 0
         else:
-            self.num_it_apple_not_eaten += 1
+            if self.num_it_apple_not_eaten == 10:
+               self.apple_coord = self.random_nonoccupied_cell()
+               self.num_it_apple_not_eaten = 0
+            else:
+               self.num_it_apple_not_eaten += 1
         
         s0dead |= self.snake0.head_collides_with(self.snake1)
         s1dead |= self.snake1.head_collides_with(self.snake0)
